@@ -1,0 +1,11 @@
+---
+- name: Install eucalyptus-nc package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-nc-{{ euca_version }}
+
+- name: Install eucanetd package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucanetd-{{ euca_version }}
+  when: euca_version | match("^4")

@@ -1,0 +1,6 @@
+---
+- name: Install eucalyptus-walrus package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-walrus-{{ euca_version }}
+

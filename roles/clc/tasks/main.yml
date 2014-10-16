@@ -1,0 +1,17 @@
+---
+- name: Install eucalyptus-cloud package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-cloud-{{ euca_version }}
+
+- name: Install eucalyptus-imaging-worker-image package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-imaging-worker-image-{{ img_wrkr_img_ver }}
+  when: euca_version | match("^4")
+
+- name: Install eucalyptus-load-balancer-image package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-load-balancer-image-{{ ld_bal_img_ver }}
+  when: euca_version | match("^4")

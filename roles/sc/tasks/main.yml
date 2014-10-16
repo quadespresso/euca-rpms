@@ -1,0 +1,6 @@
+---
+- name: Install eucalyptus-sc package
+  yum: name="{{ item }}" state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-sc-{{ euca_version }}
+

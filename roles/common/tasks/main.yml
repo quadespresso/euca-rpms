@@ -1,0 +1,14 @@
+---
+- name: Install template repo files
+  template: src={{ item }}.j2 dest=/etc/yum.repos.d/{{ item }}
+  with_items:
+  - eucalyptus-release.repo
+  - euca2ools-release.repo
+  - elrepo.repo
+  - epel.repo
+
+- name: Install eucalyptus-release and eucalyptus-admin-tools packages
+  yum: name={{ item }} state=installed enablerepo=base,updates
+  with_items:
+  - eucalyptus-admin-tools-{{ euca_version }}
+  - eucalyptus-{{ euca_version }}

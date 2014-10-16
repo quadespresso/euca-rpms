@@ -1,0 +1,7 @@
+# Euca 4.0.0 only
+
+euca_release: 4.0
+euca2ools_version: 3.1
+
+img_wrkr_img_ver: 1.0.0
+ld_bal_img_ver: 1.0.5
