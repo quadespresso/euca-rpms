@@ -1,3 +1,8 @@
 Installs Eucalyptus RPMS only, but you get to specify what version and on which machines, based on role.
 
 Supports Eucalyptus v3.2.0 onwards.
+
+To get started:
+
+- edit the last line in vars/main.yml to specify the version of Eucalyptus you want to deploy
+- edit site_hosts to specify which host will take on which role
