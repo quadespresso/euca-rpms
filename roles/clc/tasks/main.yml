@@ -14,4 +14,4 @@
   yum: name="{{ item }}" state=installed enablerepo=base,updates
   with_items:
   - eucalyptus-load-balancer-image-{{ ld_bal_img_ver }}
-  when: euca_version | match("^4")
+  when: ld_bal_img_ver != ""
