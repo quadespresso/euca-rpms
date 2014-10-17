@@ -1,11 +1,19 @@
 ---
+- set_fact: os_distro="centos"
+  when: ansible_distribution == "CentOS"
+
+- set_fact: os_distro="rhel"
+  when: ansible_distribution == "RedHat"
+
 - name: Install template repo files
-  template: src={{ item }}.j2 dest=/etc/yum.repos.d/{{ item }}
+  template: src={{ item }}.repo.j2 dest=/etc/yum.repos.d/{{ item }}.repo
   with_items:
-  - eucalyptus-release.repo
-  - euca2ools-release.repo
-  - elrepo.repo
-  - epel.repo
+  #- eucalyptus-{{ ansible_distribution }}
+  #- euca2ools-{{ ansible_distribution }}
+  - eucalyptus
+  - euca2ools
+  - elrepo
+  - epel
 
 - name: Install eucalyptus-release and eucalyptus-admin-tools packages
   yum: name={{ item }} state=installed enablerepo=base,updates

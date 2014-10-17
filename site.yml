@@ -4,7 +4,6 @@
 
 - hosts: all
   tags: wait
-  gather_facts: no
   tasks:
   - name: Wait for SSH
     local_action: wait_for port=22 timeout=900 host={% if ansible_ssh_host is defined %}{{ ansible_ssh_host }}{% else %}{{ inventory_hostname }}{% endif %}
